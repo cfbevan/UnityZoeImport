@@ -39,7 +39,6 @@ public class JSONSpriteImporter : EditorWindow {
 		prefix = EditorGUILayout.TextField (prefix);
 		EditorGUILayout.EndHorizontal ();
 
-		EditorGUILayout.PrefixLabel ("Note: The prefix should not be the same as the image files used in animation");
 		if(GUILayout.Button("Run"))
 		{
 			Run();
