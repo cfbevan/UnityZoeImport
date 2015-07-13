@@ -8,7 +8,7 @@ Copy all the files from the assets folder into the assets folder in your project
 
 ## Usage
 
-A new menu option will appear under window -> JSON Sprite Import. When you click this menu option, a new editor window will appear. 
+A new menu option will appear under window -> JSON Sprite Import. When you click this menu option, a new editor window will appear. Watch the Youtube video: http://youtu.be/NpDeVaWPipQ 
 
 ## Contributing
 
@@ -20,7 +20,7 @@ A new menu option will appear under window -> JSON Sprite Import. When you click
 
 ## History
 
-TODO: Write history
+v0.1.0 First release
 
 ## Thanks
 
