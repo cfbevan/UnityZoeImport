@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
@@ -107,8 +107,9 @@ public class JSONSpriteImporter : EditorWindow {
 		for(int i=0; i<images.Count; i++)
 		{
 			TextureImporter importer = TextureImporter.GetAtPath(wd+images_data[i].str) as TextureImporter;
-			//importer.assetPath = images_data[i].str;
-			importer.textureType = TextureImporterType.Sprite;
+            //importer.assetPath = images_data[i].str;
+            importer.mipmapEnabled = false;
+            importer.textureType = TextureImporterType.Sprite;
 			importer.spriteImportMode = SpriteImportMode.Multiple;
 			importer.spritesheet = sprite_metadata[i].ToArray();
 
@@ -171,7 +172,17 @@ public class JSONSpriteImporter : EditorWindow {
 
 			AnimationUtility.SetObjectReferenceCurve(clip, curveBinding, keyframes.ToArray());
 
-			AssetDatabase.CreateAsset(clip,wd+animationName+".anim");
+            //load asset if it exists, else create new
+            AnimationClip a = AssetDatabase.LoadAssetAtPath<AnimationClip>(wd + animationName + ".anim");
+            if(a!= null)
+            {
+                Debug.Log("update clip");
+                clip.wrapMode = a.wrapMode;
+                a = clip;
+            } else
+            {
+                AssetDatabase.CreateAsset(clip, wd + animationName + ".anim");
+            }
 		}
 		AssetDatabase.SaveAssets();
 
